@@ -51,7 +51,7 @@ public class Jackie {
                 history.add(task);
                 System.out.println("\tNew task added:");
                 System.out.println("\t\t" + task);
-                System.out.println("\tYou have " + history.size() + " tasks in the list. \n");
+                System.out.println("\tYou have " + history.size() + " tasks in the list.\n");
 
             } else if (input.startsWith("deadline ") && input.contains(" /by ")){
                 additional = input.substring(input.indexOf("/") + 4);
@@ -62,7 +62,7 @@ public class Jackie {
                 history.add(task);
                 System.out.println("\tNew task added:");
                 System.out.println("\t\t" + task);
-                System.out.println("\tYou have " + history.size() + " tasks in the list. \n");
+                System.out.println("\tYou have " + history.size() + " tasks in the list.\n");
 
             } else if (input.startsWith("event ") && input.contains(" /from ") && input.contains(" /to ")){
                 additional = input.substring(input.indexOf("/") + 6);
@@ -74,7 +74,7 @@ public class Jackie {
                 history.add(task);
                 System.out.println("\tNew task added:");
                 System.out.println("\t\t" + task);
-                System.out.println("\tYou have " + history.size() + " tasks in the list. \n");
+                System.out.println("\tYou have " + history.size() + " tasks in the list.\n");
 
             } else {
                 history.add(new Task(input));

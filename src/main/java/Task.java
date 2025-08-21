@@ -7,19 +7,16 @@ public class Task {
         this.done = false;
     }
 
-    public String status () {
-        return done ? "[X]" : "[ ]";
-    }
-
-    public String getName () {
-        return this.name;
-    }
-
     public void markAsDone () {
         this.done = true;
     }
 
     public void markAsNotDone () {
         this.done = false;
+    }
+
+    public String toString () {
+        String status = done ? "[X] " : "[ ] ";
+        return status + this.name;
     }
 }

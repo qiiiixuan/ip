@@ -1,0 +1,8 @@
+public class JackieExceptions {
+
+    static class InvalidInputException extends Exception {
+        public InvalidInputException (String msg) {
+            super(msg);
+        }
+    }
+}

@@ -1,10 +1,15 @@
+hello
 todo task 1
+deadline task 2
 deadline task 2 /by today
+event /task 3 /from now /to tomorrow
 event task 3 /from now /to tomorrow
 list
+mark 4
 mark 1
 mark 2
 list
+unmark task 2
 unmark 1
 list
 bye

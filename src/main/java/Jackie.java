@@ -92,14 +92,14 @@ public class Jackie {
                         throw new JackieExceptions.InvalidInputException(
                                 "Deadline task must have due date. Use the /by keyword."
                         );
-                    } else if (input.substring(0, input.indexOf("/") - 1).strip().length() < 10) {
+                    } else if (input.substring(0, input.indexOf(" /by ")).strip().length() < 10) {
                         throw new JackieExceptions.InvalidInputException(
-                                "Deadline task cannot be blank. Do not use \"/\" other than as a keyword."
+                                "Deadline task cannot be blank."
                         );
                     }
-                    additional = input.substring(input.indexOf("/") + 4);
+                    additional = input.substring(input.indexOf(" /by ") + 5);
                     task = new Deadline(
-                            input.substring(9, input.indexOf("/") - 1),
+                            input.substring(9, input.indexOf(" /by ")),
                             additional
                     );
                     history.add(task);
@@ -110,22 +110,22 @@ public class Jackie {
                     System.out.println("\tERROR: " + e.getMessage() + "\n");
                 }
 
-            } else if (input.startsWith("event ")){
+            } else if (input.startsWith("event ")) {
                 try {
                     if (!input.contains(" /from ") || !input.contains(" /to ")) {
                         throw new JackieExceptions.InvalidInputException(
                                 "Event task must have from and to date. Use the /from and /to keywords."
                         );
-                    } else if (input.substring(0, input.indexOf("/") - 1).strip().length() < 7) {
+                    } else if (input.substring(0, input.indexOf(" /from ")).strip().length() < 7) {
                         throw new JackieExceptions.InvalidInputException(
-                                "Event task cannot be blank. Do not use \"/\" other than as a keyword."
+                                "Event task cannot be blank."
                         );
                     }
-                    additional = input.substring(input.indexOf("/") + 6);
+                    additional = input.substring(input.indexOf("/from ") + 6);
                     task = new Event(
-                            input.substring(6, input.indexOf("/") - 1),
-                            additional.substring(0, additional.indexOf("/") - 1),
-                            additional.substring(additional.indexOf("/") + 4)
+                            input.substring(6, input.indexOf(" /from ")),
+                            additional.substring(0, additional.indexOf(" /to ")),
+                            additional.substring(additional.indexOf("/to ") + 4)
                     );
                     history.add(task);
                     System.out.println("\tNew task added:");
@@ -133,6 +133,27 @@ public class Jackie {
                     System.out.println("\tYou have " + history.size() + " tasks in the list.\n");
                 } catch (JackieExceptions.InvalidInputException e) {
                     System.out.println("\tERROR: " + e.getMessage() + "\n");
+                }
+
+            } else if (input.startsWith("delete ")) {
+                try {
+                    if (input.strip().length() < 8) {
+                        throw new JackieExceptions.InvalidInputException(
+                                "Task index missing."
+                        );
+                    }
+                    index = Integer.parseInt(input.substring(7)) - 1;
+                    task = history.get(index);
+                    history.remove(index);
+                    System.out.println("\tI have removed this task from the list:");
+                    System.out.println("\t\t" + task);
+                    System.out.println("\tYou have " + history.size() + " tasks in the list.\n");
+                } catch (JackieExceptions.InvalidInputException e) {
+                    System.out.println("\tERROR: " + e.getMessage() + "\n");
+                } catch (NumberFormatException e) {
+                    System.out.println("\tERROR: Invalid task index.\n");
+                } catch (IndexOutOfBoundsException e) {
+                    System.out.println("\tERROR: Task does not exist.\n");
                 }
 
             } else {

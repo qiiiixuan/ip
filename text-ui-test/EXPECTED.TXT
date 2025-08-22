@@ -23,7 +23,7 @@ Add tasks to your list!
                 [D][ ] task 2 (by: today)
         You have 2 tasks in the list.
 
-        ERROR: Event task cannot be blank. Do not use "/" other than as a keyword.
+        ERROR: Event task cannot be blank.
 
         New task added:
                 [E][ ] task 3 (from: now to: tomorrow)
@@ -56,6 +56,16 @@ Add tasks to your list!
         1.[T][ ] task 1
         2.[D][X] task 2 (by: today)
         3.[E][ ] task 3 (from: now to: tomorrow)
+
+        ERROR: Task index missing.
+
+        I have removed this task from the list:
+                [E][ ] task 3 (from: now to: tomorrow)
+        You have 2 tasks in the list.
+
+        These are your tasks:
+        1.[T][ ] task 1
+        2.[D][X] task 2 (by: today)
 
 ______________________________
 Goodbye!

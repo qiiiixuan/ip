@@ -5,13 +5,16 @@ Welcome! I am...
 ,_| | |_| |  |_ |   < | |  __/
 \___/\__,_|\___/|_|\_\|_|\___/
 ______________________________
-        Add tasks to your list!
+Add tasks to your list!
 
         ERROR: Sorry, not sure what "hello" means...
         Try using the following keywords:
-        "todo *task*"
-        "deadline *task* /by *date*"
-        "event *task* /from *date* /to *date*"
+                "todo *task*"
+                "deadline *task* /by *date*"
+                "event *task* /from *date* /to *date*"
+                "list"
+                "mark *number*"
+                "unmark *number*"
 
         New task added:
                 [T][ ] task 1

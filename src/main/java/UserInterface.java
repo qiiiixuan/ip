@@ -12,7 +12,8 @@ public class UserInterface {
                 ,_| | |_| |  |_ |   < | |  __/
                 \\___/\\__,_|\\___/|_|\\_\\|_|\\___/
                 """;
-        System.out.println("Welcome! I am...\n" + logo + "______________________________");
+        System.out.println("Welcome! I am...\n" + logo +
+                "______________________________\nAdd tasks to your list!\n");
     }
 
     public void reply(String output) {
@@ -52,9 +53,12 @@ public class UserInterface {
         reply("ERROR: Sorry, not sure what \"" + input + "\" means...\n" +
                 """
                 Try using the following keywords:
-                "todo *task*"
-                "deadline *task* /by *date*"
-                "event *task* /from *date* /to *date*"
+                \t"todo *task*"
+                \t"deadline *task* /by *date*"
+                \t"event *task* /from *date* /to *date*"
+                \t"list"
+                \t"mark *number*"
+                \t"unmark *number*"
                 """
         );
     }

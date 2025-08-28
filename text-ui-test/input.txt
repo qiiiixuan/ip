@@ -2,8 +2,9 @@ hello
 todo task 1
 deadline task 2
 deadline task 2 /by today
-event     /from now /to tomorrow
-event task 3 /from now /to tomorrow
+deadline task 2 /by 2021-12-21
+event     /from 2021-11-22 /to 2021-12-22
+event task 3 /from 2021-11-22 /to 2021-12-22
 list
 mark 4
 mark 1

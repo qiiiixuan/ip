@@ -6,6 +6,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
@@ -42,11 +46,11 @@ public class Jackie {
                     Files.createDirectory(Path.of("./data"));
                     file.createNewFile(); // output not required
                 } catch (IOException exc) {
-                    System.out.println("\tERROR: " + exc.getMessage() + "\n");
+                    System.out.println("\nERROR LOADING FILE: " + exc.getMessage() + "\n");
                 }
             }
         } catch (JackieExceptions.InvalidInputException e) {
-            System.out.println("\tERROR: " + e.getMessage() + "\n");
+            System.out.println("\nERROR LOADING FILE: " + e.getMessage() + "\n");
         }
 
         // Await user input
@@ -136,7 +140,7 @@ public class Jackie {
                     additional = input.substring(input.indexOf(" /by ") + 5);
                     task = new Deadline(
                             input.substring(9, input.indexOf(" /by ")),
-                            additional
+                            LocalDate.parse(additional)
                     );
                     history.add(task);
                     writeToFile(path, history);
@@ -145,6 +149,8 @@ public class Jackie {
                     System.out.println("\tYou have " + history.size() + " tasks in the list.\n");
                 } catch (JackieExceptions.InvalidInputException | IOException e) {
                     System.out.println("\tERROR: " + e.getMessage() + "\n");
+                } catch (DateTimeParseException e) {
+                    System.out.println("\tERROR: Wrong formatting of date. Use (yyyy-mm-dd)\n");
                 }
 
             } else if (input.startsWith("event ")) {
@@ -161,8 +167,8 @@ public class Jackie {
                     additional = input.substring(input.indexOf("/from ") + 6);
                     task = new Event(
                             input.substring(6, input.indexOf(" /from ")),
-                            additional.substring(0, additional.indexOf(" /to ")),
-                            additional.substring(additional.indexOf("/to ") + 4)
+                            LocalDate.parse(additional.substring(0, additional.indexOf(" /to "))),
+                            LocalDate.parse(additional.substring(additional.indexOf("/to ") + 4))
                     );
                     history.add(task);
                     writeToFile(path, history);
@@ -171,6 +177,8 @@ public class Jackie {
                     System.out.println("\tYou have " + history.size() + " tasks in the list.\n");
                 } catch (JackieExceptions.InvalidInputException | IOException e) {
                     System.out.println("\tERROR: " + e.getMessage() + "\n");
+                } catch (DateTimeParseException e) {
+                    System.out.println("\tERROR: Wrong formatting of date. Use (yyyy-mm-dd)\n");
                 }
 
             } else if (input.startsWith("delete ")) {
@@ -212,7 +220,7 @@ public class Jackie {
         System.out.println("______________________________\nGoodbye!");
     }
 
-
+    // Custom functions
 
     // Return list of tasks to history
     private static ArrayList<Task> readFile(String path) throws
@@ -242,7 +250,10 @@ public class Jackie {
                     }
                     list.add(new Deadline(
                             line.substring(9, line.lastIndexOf(" (by: ")),
-                            line.substring(line.lastIndexOf(" (by: ") + 6, line.lastIndexOf(')'))
+                            LocalDate.parse(line.substring(
+                                    line.lastIndexOf(" (by: ") + 6,
+                                    line.lastIndexOf(')')
+                            ), DateTimeFormatter.ofPattern("dd MMM yyyy"))
                     ));
 
                 } else if (type == 'E') {
@@ -253,8 +264,14 @@ public class Jackie {
                     }
                     list.add(new Event(
                             line.substring(9, line.lastIndexOf(" (from: ")),
-                            line.substring(line.lastIndexOf(" (from: ") + 8, line.lastIndexOf(" to: ")),
-                            line.substring(line.lastIndexOf(" to: ") + 5, line.lastIndexOf(')'))
+                            LocalDate.parse(line.substring(
+                                    line.lastIndexOf(" (from: ") + 8,
+                                    line.lastIndexOf(" to: ")
+                            ), DateTimeFormatter.ofPattern("dd MMM yyyy")),
+                            LocalDate.parse(line.substring(
+                                    line.lastIndexOf(" to: ") + 5,
+                                    line.lastIndexOf(')')
+                            ))
                     ));
                 }
 
@@ -266,11 +283,13 @@ public class Jackie {
             throw new JackieExceptions.InvalidInputException(
                     "Wrong formatting in ./data/Tasks.txt at line " + counter
             );
+        } catch (DateTimeParseException e) {
+            throw new JackieExceptions.InvalidInputException(
+                    "Wrong date formatting in ./data/Tasks.txt at line " + counter
+            );
         }
         return list;
     }
-
-
 
     // Update text file of tasks
     private static void writeToFile(String path, ArrayList<Task> history) throws IOException {
@@ -280,4 +299,5 @@ public class Jackie {
         }
         fw.close();
     }
+
 }

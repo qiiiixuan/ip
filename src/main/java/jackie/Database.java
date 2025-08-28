@@ -1,3 +1,10 @@
+package jackie;
+
+import jackie.task.Deadline;
+import jackie.task.Event;
+import jackie.task.Task;
+import jackie.task.Todo;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;

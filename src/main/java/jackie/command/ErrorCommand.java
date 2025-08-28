@@ -1,3 +1,8 @@
+package jackie.command;
+
+import jackie.TaskList;
+import jackie.UserInterface;
+
 public class ErrorCommand extends Command {
 
     private final Exception e;

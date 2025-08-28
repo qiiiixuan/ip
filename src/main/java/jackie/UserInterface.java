@@ -1,3 +1,7 @@
+package jackie;
+
+import jackie.task.Task;
+
 import java.time.format.DateTimeParseException;
 
 public class UserInterface {

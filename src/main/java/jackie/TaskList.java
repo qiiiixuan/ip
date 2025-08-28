@@ -1,3 +1,7 @@
+package jackie;
+
+import jackie.task.Task;
+
 import java.util.ArrayList;
 
 public class TaskList {

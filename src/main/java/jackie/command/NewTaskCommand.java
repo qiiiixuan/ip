@@ -1,3 +1,9 @@
+package jackie.command;
+
+import jackie.TaskList;
+import jackie.UserInterface;
+import jackie.task.Task;
+
 public class NewTaskCommand extends Command {
 
     private final Task task;

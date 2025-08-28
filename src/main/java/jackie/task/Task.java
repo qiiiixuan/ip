@@ -1,3 +1,5 @@
+package jackie.task;
+
 public class Task {
     protected String name;
     protected Boolean done;

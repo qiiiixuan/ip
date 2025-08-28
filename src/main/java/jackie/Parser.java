@@ -1,3 +1,12 @@
+package jackie;
+
+import jackie.command.*;
+
+import jackie.task.Deadline;
+import jackie.task.Event;
+import jackie.task.Task;
+import jackie.task.Todo;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Objects;

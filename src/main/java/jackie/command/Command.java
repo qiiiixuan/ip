@@ -1,3 +1,8 @@
+package jackie.command;
+
+import jackie.TaskList;
+import jackie.UserInterface;
+
 public class Command {
 
     private final String input;

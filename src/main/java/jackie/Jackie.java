@@ -1,3 +1,7 @@
+package jackie;
+
+import jackie.command.Command;
+
 import java.io.IOException;
 import java.util.Scanner;
 

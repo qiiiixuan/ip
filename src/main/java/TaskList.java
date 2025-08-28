@@ -38,11 +38,11 @@ public class TaskList {
     }
 
     public String toString() {
-        String str = "\tThese are your tasks:\n";
+        String str = "These are your tasks:\n";
         Task task;
         for (int i = 0; i < this.taskList.size(); i++) {
             task = this.taskList.get(i);
-            str = str.concat("\t" + (i + 1) + "." + task + "\n");
+            str = str.concat((i + 1) + "." + task + "\n");
         }
         return str;
     }

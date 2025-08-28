@@ -8,14 +8,9 @@ import java.util.Scanner;
 
 public class Jackie {
     public static void main(String[] args) {
-        String logo = """
-                 _____           _
-                |__ __|__   ___ | | __ *  ___
-                  | |/ _  |/ ,_\\| |/ /| |/ _ \\
-                ,_| | |_| |  |_ |   < | |  __/
-                \\___/\\__,_|\\___/|_|\\_\\|_|\\___/
-                """;
-        System.out.println("Welcome! I am...\n" + logo + "______________________________");
+
+        UserInterface UI = new UserInterface();
+        UI.greeting();
 
         // Initialize values
         String path = "./data/Tasks.txt";
@@ -27,13 +22,13 @@ public class Jackie {
         int index = 0;
 
         // Await user input
-        System.out.println("Add tasks to your list!\n");
+        UI.reply("Add tasks to your list!\n");
         input = inputSc.nextLine();
 
         // Loop until 'bye' keyword
         while(!Objects.equals(input, "bye")) {
             if (Objects.equals(input, "list")) {
-                System.out.println(history);
+                UI.reply(history.toString());
 
             } else if (input.startsWith("mark ")) {
                 try {
@@ -46,14 +41,12 @@ public class Jackie {
                     task = history.get(index);
                     task.markAsDone();
                     history.writeToFile(path);
-                    System.out.println("\tGood work! I have marked this task as done:");
-                    System.out.println("\t\t" + task + "\n");
-                } catch (JackieExceptions.InvalidInputException | IOException e) {
-                    System.out.println("\tERROR: " + e.getMessage() + "\n");
-                } catch (NumberFormatException e) {
-                    System.out.println("\tERROR: Invalid task index.\n");
-                } catch (IndexOutOfBoundsException e) {
-                    System.out.println("\tERROR: Task does not exist.\n");
+                    UI.markReply(task);
+                } catch (JackieExceptions.InvalidInputException |
+                         IOException |
+                         NumberFormatException |
+                         IndexOutOfBoundsException e) {
+                    UI.showError(e);
                 }
 
             } else if (input.startsWith("unmark ")) {
@@ -67,14 +60,12 @@ public class Jackie {
                     task = history.get(index);
                     task.markAsNotDone();
                     history.writeToFile(path);
-                    System.out.println("\tI have marked this task as not done:");
-                    System.out.println("\t\t" + task + "\n");
-                } catch (JackieExceptions.InvalidInputException | IOException e) {
-                    System.out.println("\tERROR: " + e.getMessage() + "\n");
-                } catch (NumberFormatException e) {
-                    System.out.println("\tERROR: Invalid task index.\n");
-                } catch (IndexOutOfBoundsException e) {
-                    System.out.println("\tERROR: Task does not exist.\n");
+                    UI.unmarkReply(task);
+                } catch (JackieExceptions.InvalidInputException |
+                         IOException |
+                         NumberFormatException |
+                         IndexOutOfBoundsException e) {
+                    UI.showError(e);
                 }
 
             } else if (input.startsWith("todo ")){
@@ -87,11 +78,9 @@ public class Jackie {
                     task = new Todo(input.substring(5));
                     history.add(task);
                     history.writeToFile(path);
-                    System.out.println("\tNew task added:");
-                    System.out.println("\t\t" + task);
-                    System.out.println("\tYou have " + history.size() + " tasks in the list.\n");
+                    UI.taskReply(task, history.size());
                 } catch (JackieExceptions.InvalidInputException | IOException e) {
-                    System.out.println("\tERROR: " + e.getMessage() + "\n");
+                    UI.showError(e);
                 }
 
             } else if (input.startsWith("deadline ")){
@@ -112,13 +101,11 @@ public class Jackie {
                     );
                     history.add(task);
                     history.writeToFile(path);
-                    System.out.println("\tNew task added:");
-                    System.out.println("\t\t" + task);
-                    System.out.println("\tYou have " + history.size() + " tasks in the list.\n");
-                } catch (JackieExceptions.InvalidInputException | IOException e) {
-                    System.out.println("\tERROR: " + e.getMessage() + "\n");
-                } catch (DateTimeParseException e) {
-                    System.out.println("\tERROR: Wrong formatting of date. Use (yyyy-mm-dd)\n");
+                    UI.taskReply(task, history.size());
+                } catch (JackieExceptions.InvalidInputException |
+                         IOException |
+                         DateTimeParseException e) {
+                    UI.showError(e);
                 }
 
             } else if (input.startsWith("event ")) {
@@ -140,13 +127,11 @@ public class Jackie {
                     );
                     history.add(task);
                     history.writeToFile(path);
-                    System.out.println("\tNew task added:");
-                    System.out.println("\t\t" + task);
-                    System.out.println("\tYou have " + history.size() + " tasks in the list.\n");
-                } catch (JackieExceptions.InvalidInputException | IOException e) {
-                    System.out.println("\tERROR: " + e.getMessage() + "\n");
-                } catch (DateTimeParseException e) {
-                    System.out.println("\tERROR: Wrong formatting of date. Use (yyyy-mm-dd)\n");
+                    UI.taskReply(task, history.size());
+                } catch (JackieExceptions.InvalidInputException |
+                         IOException |
+                         DateTimeParseException e) {
+                    UI.showError(e);
                 }
 
             } else if (input.startsWith("delete ")) {
@@ -160,31 +145,20 @@ public class Jackie {
                     task = history.get(index);
                     history.remove(index);
                     history.writeToFile(path);
-                    System.out.println("\tI have removed this task from the list:");
-                    System.out.println("\t\t" + task);
-                    System.out.println("\tYou have " + history.size() + " tasks in the list.\n");
-                } catch (JackieExceptions.InvalidInputException | IOException e) {
-                    System.out.println("\tERROR: " + e.getMessage() + "\n");
-                } catch (NumberFormatException e) {
-                    System.out.println("\tERROR: Invalid task index.\n");
-                } catch (IndexOutOfBoundsException e) {
-                    System.out.println("\tERROR: Task does not exist.\n");
+                    UI.deleteReply(task, history.size());
+                } catch (JackieExceptions.InvalidInputException |
+                         IOException |
+                         NumberFormatException |
+                         IndexOutOfBoundsException e) {
+                    UI.showError(e);
                 }
 
             } else {
-                System.out.println("\tERROR: Sorry, not sure what \"" + input + "\" means...");
-                System.out.println(
-                        """
-                        \tTry using the following keywords:
-                        \t"todo *task*"
-                        \t"deadline *task* /by *date*"
-                        \t"event *task* /from *date* /to *date*"
-                        """
-                );
+                UI.defaultReply(input);
             }
             input = inputSc.nextLine();
         }
 
-        System.out.println("______________________________\nGoodbye!");
+        UI.exit();
     }
 }

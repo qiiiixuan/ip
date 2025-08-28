@@ -19,20 +19,22 @@ Add tasks to your list!
 
         ERROR: Deadline task must have due date. Use the /by keyword.
 
+        ERROR: Wrong formatting of date. Use (yyyy-mm-dd)
+
         New task added:
-                [D][ ] task 2 (by: today)
+                [D][ ] task 2 (by: 21 Dec 2021)
         You have 2 tasks in the list.
 
         ERROR: Event task cannot be blank.
 
         New task added:
-                [E][ ] task 3 (from: now to: tomorrow)
+                [E][ ] task 3 (from: 22 Nov 2021 to: 22 Dec 2021)
         You have 3 tasks in the list.
 
         These are your tasks:
         1.[T][ ] task 1
-        2.[D][ ] task 2 (by: today)
-        3.[E][ ] task 3 (from: now to: tomorrow)
+        2.[D][ ] task 2 (by: 21 Dec 2021)
+        3.[E][ ] task 3 (from: 22 Nov 2021 to: 22 Dec 2021)
 
     	ERROR: Task does not exist.
 
@@ -40,12 +42,12 @@ Add tasks to your list!
                 [T][X] task 1
 
         Good work! I have marked this task as done:
-                [D][X] task 2 (by: today)
+                [D][X] task 2 (by: 21 Dec 2021)
 
         These are your tasks:
         1.[T][X] task 1
-        2.[D][X] task 2 (by: today)
-        3.[E][ ] task 3 (from: now to: tomorrow)
+        2.[D][X] task 2 (by: 21 Dec 2021)
+        3.[E][ ] task 3 (from: 22 Nov 2021 to: 22 Dec 2021)
 
     	ERROR: Invalid task index.
 
@@ -54,18 +56,18 @@ Add tasks to your list!
 
         These are your tasks:
         1.[T][ ] task 1
-        2.[D][X] task 2 (by: today)
-        3.[E][ ] task 3 (from: now to: tomorrow)
+        2.[D][X] task 2 (by: 21 Dec 2021)
+        3.[E][ ] task 3 (from: 22 Nov 2021 to: 22 Dec 2021)
 
         ERROR: Task index missing.
 
         I have removed this task from the list:
-                [E][ ] task 3 (from: now to: tomorrow)
+                [E][ ] task 3 (from: 22 Nov 2021 to: 22 Dec 2021)
         You have 2 tasks in the list.
 
         These are your tasks:
         1.[T][ ] task 1
-        2.[D][X] task 2 (by: today)
+        2.[D][X] task 2 (by: 21 Dec 2021)
 
 ______________________________
 Goodbye!

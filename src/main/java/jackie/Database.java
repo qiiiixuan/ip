@@ -109,6 +109,10 @@ public class Database {
                                     line.lastIndexOf(')')
                             ))
                     ));
+                } else {
+                    throw new JackieExceptions.InvalidInputException(
+                            "Wrong formatting in ./data/Tasks.txt at line " + counter
+                    );
                 }
 
                 if (line.charAt(6) == 'X') {
@@ -123,6 +127,8 @@ public class Database {
             throw new JackieExceptions.InvalidInputException(
                     "Wrong date formatting in ./data/Tasks.txt at line " + counter
             );
+        } finally {
+            fileSc.close();
         }
         return list;
     }

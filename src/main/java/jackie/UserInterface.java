@@ -54,7 +54,7 @@ public class UserInterface {
     }
 
     public void defaultReply(String input) {
-        reply("ERROR: Sorry, not sure what \"" + input + "\" means...\n" +
+        reply("Sorry, I'm not sure what \"" + input + "\" means...\n" +
                 """
                 Try using the following keywords:
                 \t"todo *task*"
@@ -76,7 +76,7 @@ public class UserInterface {
         } else if (e instanceof DateTimeParseException) {
             message = "Wrong formatting of date. Use (yyyy-mm-dd)";
         }
-        System.out.println("\tERROR: " + message + "\n");
+        System.out.println("\tOops: " + message + "\n");
     }
 
     public void exit() {

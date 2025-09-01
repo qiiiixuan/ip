@@ -1,6 +1,12 @@
 package jackie;
 
-import jackie.command.*;
+import jackie.command.Command;
+import jackie.command.DeleteCommand;
+import jackie.command.ErrorCommand;
+import jackie.command.ExitCommand;
+import jackie.command.ListCommand;
+import jackie.command.MarkCommand;
+import jackie.command.NewTaskCommand;
 
 import jackie.task.Deadline;
 import jackie.task.Event;
@@ -9,21 +15,22 @@ import jackie.task.Todo;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+
 import java.util.Objects;
 
 public class Parser {
 
-    boolean notBye;
+    boolean isNotBye;
 
     public Parser() {
-        this.notBye = true;
+        this.isNotBye = true;
     }
 
     public Command parse(String input) {
         Command command;
         try {
             if (Objects.equals(input, "bye")) {
-                this.notBye = false;
+                this.isNotBye = false;
                 command = new ExitCommand();
 
             } else if (Objects.equals(input, "list")) {

@@ -3,6 +3,7 @@ package jackie;
 import jackie.command.Command;
 
 import java.io.IOException;
+
 import java.util.Scanner;
 
 public class Jackie {
@@ -22,10 +23,10 @@ public class Jackie {
 
     public void run() {
         ui.greeting();
-        String input;
+        String input = "";
         Scanner inputSc = new Scanner(System.in);
 
-        while(parser.notBye) {
+        while(parser.isNotBye) {
             try {
                 input = inputSc.nextLine();
                 Command command = parser.parse(input);

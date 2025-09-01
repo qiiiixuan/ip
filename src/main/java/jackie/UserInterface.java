@@ -63,6 +63,7 @@ public class UserInterface {
                 \t"list"
                 \t"mark *number*"
                 \t"unmark *number*"
+                \t"find *keyword*"
                 """
         );
     }

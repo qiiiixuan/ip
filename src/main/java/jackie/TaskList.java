@@ -12,6 +12,9 @@ public class TaskList {
     }
 
     public String toString() {
+        if (tasks.isEmpty()) {
+            return "There are no tasks. ";
+        }
         String str = "These are your tasks:\n";
         Task task;
         for (int i = 0; i < this.tasks.size(); i++) {

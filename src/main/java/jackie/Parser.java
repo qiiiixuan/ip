@@ -52,6 +52,14 @@ public class Parser {
                 }
                 command = new DeleteCommand(Integer.parseInt(input.substring(7)) - 1);
 
+            } else if (input.startsWith("find ")) {
+                if (input.strip().length() < 6) {
+                    throw new JackieExceptions.InvalidInputException(
+                            "Find keyword missing."
+                    );
+                }
+                command = new FindCommand(input.substring(6));
+
             } else {
                 command = new Command(input);
             }

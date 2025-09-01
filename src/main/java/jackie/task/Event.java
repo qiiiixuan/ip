@@ -3,6 +3,9 @@ package jackie.task;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Event task created by user, to be added to {@link jackie.TaskList}.
+ */
 public class Event extends Task {
 
     protected LocalDate from;
@@ -14,6 +17,11 @@ public class Event extends Task {
         this.to = to;
     }
 
+    /**
+     * Returns a {@link String} of this task, including name, status, from date, and to date.
+     *
+     * @return A String representing the current task.
+     */
     public String toString () {
         String datePattern = "dd MMM yyyy";
         return "[E]" + super.toString() + " (from: " +

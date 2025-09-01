@@ -11,6 +11,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Objects;
 
+/**
+ * Parser that handles the logic of user input and determines which command to execute.
+ */
 public class Parser {
 
     boolean notBye;
@@ -19,6 +22,12 @@ public class Parser {
         this.notBye = true;
     }
 
+    /**
+     * Handles what to do for each user input.
+     *
+     * @param input A {@link String} of input that user entered.
+     * @return A {@link Command} corresponding to the user input.
+     */
     public Command parse(String input) {
         Command command;
         try {
@@ -64,7 +73,13 @@ public class Parser {
         return command;
     }
 
-    // Custom method to get task from input
+    /**
+     * Returns a {@link Task} that the user input to be added.
+     *
+     * @param input A {@link String} of user input
+     * @return {@link Task} to be added to {@link TaskList}.
+     * @throws JackieExceptions.InvalidInputException if the format of user input is wrong
+     */
     private static Task getTask(String input) throws JackieExceptions.InvalidInputException {
         Task task = null;
         if (input.startsWith("todo ")) {

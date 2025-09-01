@@ -4,6 +4,9 @@ import jackie.TaskList;
 import jackie.UserInterface;
 import jackie.task.Task;
 
+/**
+ * Command that adds new task to the task list.
+ */
 public class NewTaskCommand extends Command {
 
     private final Task task;
@@ -13,6 +16,12 @@ public class NewTaskCommand extends Command {
         this.task = task;
     }
 
+    /**
+     * Executes the command to add new task to the task list.
+     *
+     * @param ui The {@link UserInterface} of the program.
+     * @param taskList The current {@link TaskList}.
+     */
     @Override
     public void execute(UserInterface ui, TaskList taskList) {
         taskList.add(task);

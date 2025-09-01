@@ -20,6 +20,11 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
+/**
+ * A link to a specific file on the hard drive.
+ * Handles the logic of retrieving data from and writing data to the file.
+ */
 public class Database {
 
     private final String path;
@@ -28,6 +33,13 @@ public class Database {
         this.path = path;
     }
 
+    /**
+     * Loads file and returns an {@link ArrayList} of {@link Task}s read from the file.
+     * If file or directory does not exist, a new one will be created at the specified path.
+     *
+     * @return A list of tasks stored in the hard drive if the formatting is right,
+     * an empty {@link ArrayList} otherwise.
+     */
     public ArrayList<Task> loadFile() {
         File file = new File(path);
         ArrayList<Task> tasks = new ArrayList<>();
@@ -50,6 +62,13 @@ public class Database {
         return tasks;
     }
 
+    /**
+     * Writes tasks into the file in the supported format.
+     *
+     * @param tasks A {@link TaskList} with {@link Task}s to be written.
+     * @throws IOException if the named file exists but is a directory rather than a regular file,
+     * does not exist but cannot be created, or cannot be opened for any other reason
+     */
     public void writeToFile(TaskList tasks) throws IOException {
         FileWriter fw = new FileWriter(path);
         for (int i = 0; i < tasks.size(); i++) {
@@ -58,7 +77,14 @@ public class Database {
         fw.close();
     }
 
-    // Custom method to read file
+    /**
+     * Private method that reads the file and returns an {@link ArrayList} of {@link Task}s read from that file.
+     *
+     * @param path A {@link String} that indicates the path of the file.
+     * @return A list of tasks stored in the hard drive.
+     * @throws FileNotFoundException if source is not found
+     * @throws JackieExceptions.InvalidInputException if tasks in the file is in the wrong format
+     */
     private static ArrayList<Task> readFile(String path) throws
             FileNotFoundException,
             JackieExceptions.InvalidInputException {

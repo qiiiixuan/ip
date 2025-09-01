@@ -4,6 +4,9 @@ import jackie.TaskList;
 import jackie.UserInterface;
 import jackie.task.Task;
 
+/**
+ * Command that marks or unmarks the task.
+ */
 public class MarkCommand extends Command {
 
     private final boolean isDone;
@@ -15,6 +18,13 @@ public class MarkCommand extends Command {
         this.index = index;
     }
 
+    /**
+     * Executes the command to mark or unmark the task.
+     *
+     * @param ui The {@link UserInterface} of the program.
+     * @param taskList The current {@link TaskList}.
+     * @throws IndexOutOfBoundsException if index indicated to the task list is out of bounds.
+     */
     @Override
     public void execute(UserInterface ui, TaskList taskList) throws IndexOutOfBoundsException {
         Task task = taskList.get(index);

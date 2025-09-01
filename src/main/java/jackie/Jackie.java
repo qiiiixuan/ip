@@ -6,6 +6,9 @@ import java.io.IOException;
 
 import java.util.Scanner;
 
+/**
+ * A chatbot that keeps track of tasks.
+ */
 public class Jackie {
 
     private final Database db;
@@ -21,6 +24,9 @@ public class Jackie {
         this.parser = new Parser();
     }
 
+    /**
+     * Runs the program and awaits user input.
+     */
     public void run() {
         ui.greeting();
         String input = "";

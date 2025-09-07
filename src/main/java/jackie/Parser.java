@@ -7,6 +7,7 @@ import jackie.command.ExitCommand;
 import jackie.command.ListCommand;
 import jackie.command.MarkCommand;
 import jackie.command.NewTaskCommand;
+import jackie.command.FindCommand;
 
 import jackie.task.Deadline;
 import jackie.task.Event;

@@ -25,6 +25,11 @@ public class NewTaskCommand extends Command {
     @Override
     public void execute(UserInterface ui, TaskList taskList) {
         taskList.add(task);
-        ui.taskReply(task, taskList.size());
+        System.out.println(ui.taskReply(task, taskList.size()));
+    }
+
+    public String toString(UserInterface ui, TaskList taskList) {
+        taskList.add(task);
+        return ui.taskReply(task, taskList.size());
     }
 }

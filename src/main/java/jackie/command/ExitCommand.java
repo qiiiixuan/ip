@@ -20,6 +20,10 @@ public class ExitCommand extends Command {
      */
     @Override
     public void execute(UserInterface ui, TaskList taskList) {
-        ui.exit();
+        System.out.println(ui.exit());
+    }
+
+    public String toString(UserInterface ui, TaskList taskList) {
+        return ui.exit();
     }
 }

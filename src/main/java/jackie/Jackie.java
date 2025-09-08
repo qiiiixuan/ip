@@ -28,7 +28,7 @@ public class Jackie {
      * Runs the program and awaits user input.
      */
     public void run() {
-        ui.greeting();
+        System.out.println(ui.greeting());
         String input = "";
         Scanner inputSc = new Scanner(System.in);
 

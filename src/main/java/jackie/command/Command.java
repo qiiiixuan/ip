@@ -25,6 +25,8 @@ public class Command {
      * @param taskList The current {@link TaskList}.
      */
     public void execute(UserInterface ui, TaskList taskList) {
-        ui.defaultReply(input);
+        System.out.println(ui.defaultReply(input));
     }
+
+    public String toString(UserInterface ui, TaskList taskList) {return ui.defaultReply(input);}
 }

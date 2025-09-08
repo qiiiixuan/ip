@@ -33,6 +33,18 @@ public class FindCommand extends Command {
                 temp.add(task);
             }
         }
-        ui.reply(temp.toString());
+        System.out.println(ui.reply(temp.toString()));
+    }
+
+    public String toString(UserInterface ui, TaskList taskList) {
+        TaskList temp = new TaskList(new ArrayList<>());
+        Task task;
+        for (int i = 0; i < taskList.size(); i++) {
+            task = taskList.get(i);
+            if (task.toString().contains(keyword)) {
+                temp.add(task);
+            }
+        }
+        return ui.reply(temp.toString());
     }
 }

@@ -14,7 +14,7 @@ public class UserInterface {
     /**
      * Prints a welcome message on the terminal.
      */
-    public void greeting() {
+    public String greeting() {
         String logo = """
                  _____           _
                 |__ __|__   ___ | | __ *  ___
@@ -22,8 +22,16 @@ public class UserInterface {
                 ,_| | |_| |  |_ |   < | |  __/
                 \\___/\\__,_|\\___/|_|\\_\\|_|\\___/
                 """;
-        System.out.println("Welcome! I am...\n" + logo +
-                "______________________________\nAdd tasks to your list!\n");
+        return "Welcome! I am...\n" + logo +
+                "______________________________\nAdd tasks to your list!\n";
+    }
+
+    public String guiGreeting() {
+        String logo = """
+                Jackie
+                """;
+        return "Welcome! I am...\n" + logo +
+                "______________________________\nAdd tasks to your list!\n";
     }
 
     /**
@@ -31,11 +39,11 @@ public class UserInterface {
      *
      * @param output A {@link String} to be printed as a reply.
      */
-    public void reply(String output) {
+    public String reply(String output) {
         for (String line : output.split("\n")) {
-            System.out.println("\t" + line);
+            line = "\t" + line;
         }
-        System.out.println();
+        return output;
     }
 
     /**
@@ -43,8 +51,8 @@ public class UserInterface {
      *
      * @param task A {@link Task} to be marked as done.
      */
-    public void markReply(Task task) {
-        reply("Good work! I have marked this task as done:\n\t" +
+    public String markReply(Task task) {
+        return reply("Good work! I have marked this task as done:\n\t" +
                 task + "\n"
         );
     }
@@ -54,8 +62,8 @@ public class UserInterface {
      *
      * @param task A {@link Task} to be marked as not done.
      */
-    public void unmarkReply(Task task) {
-        reply("I have marked this task as not done:\n\t" +
+    public String unmarkReply(Task task) {
+        return reply("I have marked this task as not done:\n\t" +
                 task + "\n"
         );
     }
@@ -66,8 +74,8 @@ public class UserInterface {
      * @param task A {@link Task} to be added to the {@link TaskList}.
      * @param size The number of tasks left in the task list.
      */
-    public void taskReply(Task task, int size) {
-        reply("New task added:\n\t" +
+    public String taskReply(Task task, int size) {
+        return reply("New task added:\n\t" +
                 task + "\nYou have " +
                 size + " tasks in the list.\n"
         );
@@ -79,8 +87,8 @@ public class UserInterface {
      * @param task A {@link Task} to be removed from the {@link TaskList}.
      * @param size The number of tasks left in the task list.
      */
-    public void deleteReply(Task task, int size) {
-        reply("I have removed this task from the list:\n\t" +
+    public String deleteReply(Task task, int size) {
+        return reply("I have removed this task from the list:\n\t" +
                 task + "\nYou have " +
                 size + " tasks in the list.\n"
         );
@@ -91,8 +99,8 @@ public class UserInterface {
      *
      * @param input The invalid user input.
      */
-    public void defaultReply(String input) {
-        reply("Sorry, I'm not sure what \"" + input + "\" means...\n" +
+    public String defaultReply(String input) {
+        return reply("Sorry, I'm not sure what \"" + input + "\" means...\n" +
                 """
                 Try using the following keywords:
                 \t"todo *task*"
@@ -111,7 +119,7 @@ public class UserInterface {
      *
      * @param e The exception thrown and caught.
      */
-    public void showError(Exception e) {
+    public String showError(Exception e) {
         String message = e.getMessage();
         if (e instanceof IndexOutOfBoundsException) {
             message = "Task does not exist.";
@@ -120,13 +128,13 @@ public class UserInterface {
         } else if (e instanceof DateTimeParseException) {
             message = "Wrong formatting of date. Use (yyyy-mm-dd)";
         }
-        System.out.println("\tOops: " + message + "\n");
+        return "\tOops: " + message + "\n";
     }
 
     /**
      * Prints a goodbye message on the terminal.
      */
-    public void exit() {
-        System.out.println("______________________________\nGoodbye!");
+    public String exit() {
+        return "______________________________\nGoodbye!";
     }
 }

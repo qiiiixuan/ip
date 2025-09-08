@@ -27,6 +27,12 @@ public class DeleteCommand extends Command {
     public void execute(UserInterface ui, TaskList taskList) throws IndexOutOfBoundsException {
         Task task = taskList.get(index);
         taskList.remove(index);
-        ui.deleteReply(task, taskList.size());
+        System.out.println(ui.deleteReply(task, taskList.size()));
+    }
+
+    public String toString(UserInterface ui, TaskList taskList) throws IndexOutOfBoundsException {
+        Task task = taskList.get(index);
+        taskList.remove(index);
+        return ui.deleteReply(task, taskList.size());
     }
 }

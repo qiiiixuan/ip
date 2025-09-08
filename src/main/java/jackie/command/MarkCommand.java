@@ -30,10 +30,21 @@ public class MarkCommand extends Command {
         Task task = taskList.get(index);
         if (isDone) {
             task.markAsDone();
-            ui.markReply(task);
+            System.out.println(ui.markReply(task));
         } else {
             task.markAsNotDone();
-            ui.unmarkReply(task);
+            System.out.println(ui.unmarkReply(task));
+        }
+    }
+
+    public String toString(UserInterface ui, TaskList taskList) throws IndexOutOfBoundsException {
+        Task task = taskList.get(index);
+        if (isDone) {
+            task.markAsDone();
+            return ui.markReply(task);
+        } else {
+            task.markAsNotDone();
+            return ui.unmarkReply(task);
         }
     }
 }

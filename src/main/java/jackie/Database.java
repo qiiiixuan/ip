@@ -78,7 +78,7 @@ public class Database {
     }
 
     /**
-     * Private method that reads the file and returns an {@link ArrayList} of {@link Task}s read from that file.
+     * Reads the file and returns an {@link ArrayList} of {@link Task} read from that file.
      *
      * @param path A {@link String} that indicates the path of the file.
      * @return A list of tasks stored in the hard drive.

@@ -77,7 +77,7 @@ public class MainWindow extends AnchorPane {
     }
 
     /**
-     * Returns Jackie images based on the different command executed.
+     * Chooses Jackie images based on the different command executed.
      *
      * @param command The {@link Command} executed.
      * @return An {@link Image} corresponding to the command.

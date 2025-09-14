@@ -26,6 +26,9 @@ public class UserInterface {
                 "______________________________\nAdd tasks to your list!\n";
     }
 
+    /**
+     * Prints a welcome message on the GUI.
+     */
     public String guiGreeting() {
         String logo = """
                 Jackie
@@ -35,7 +38,7 @@ public class UserInterface {
     }
 
     /**
-     * Prints the output in the format of a reply on the terminal.
+     * Prints the output in the format of a reply.
      *
      * @param output A {@link String} to be printed as a reply.
      */

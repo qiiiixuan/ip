@@ -25,12 +25,16 @@ public class DeleteCommand extends Command {
      */
     @Override
     public void execute(UserInterface ui, TaskList taskList) throws IndexOutOfBoundsException {
+        assert ui != null : "User Interface not initialized";
+        assert taskList != null : "Task List not initialized";
         Task task = taskList.get(index);
         taskList.remove(index);
         System.out.println(ui.deleteReply(task, taskList.size()));
     }
 
     public String toString(UserInterface ui, TaskList taskList) throws IndexOutOfBoundsException {
+        assert ui != null : "User Interface not initialized";
+        assert taskList != null : "Task List not initialized";
         Task task = taskList.get(index);
         taskList.remove(index);
         return ui.deleteReply(task, taskList.size());

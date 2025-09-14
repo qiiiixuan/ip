@@ -24,11 +24,15 @@ public class NewTaskCommand extends Command {
      */
     @Override
     public void execute(UserInterface ui, TaskList taskList) {
+        assert ui != null : "User Interface not initialized";
+        assert taskList != null : "Task List not initialized";
         taskList.add(task);
         System.out.println(ui.taskReply(task, taskList.size()));
     }
 
     public String toString(UserInterface ui, TaskList taskList) {
+        assert ui != null : "User Interface not initialized";
+        assert taskList != null : "Task List not initialized";
         taskList.add(task);
         return ui.taskReply(task, taskList.size());
     }

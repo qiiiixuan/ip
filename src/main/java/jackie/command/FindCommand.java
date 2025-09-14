@@ -25,6 +25,8 @@ public class FindCommand extends Command {
      * @param taskList The current {@link TaskList}.
      */
     public void execute(UserInterface ui, TaskList taskList) {
+        assert ui != null : "User Interface not initialized";
+        assert taskList != null : "Task List not initialized";
         TaskList temp = new TaskList(new ArrayList<>());
         Task task;
         for (int i = 0; i < taskList.size(); i++) {
@@ -37,6 +39,8 @@ public class FindCommand extends Command {
     }
 
     public String toString(UserInterface ui, TaskList taskList) {
+        assert ui != null : "User Interface not initialized";
+        assert taskList != null : "Task List not initialized";
         TaskList temp = new TaskList(new ArrayList<>());
         Task task;
         for (int i = 0; i < taskList.size(); i++) {

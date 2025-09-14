@@ -42,6 +42,11 @@ public class MainWindow extends AnchorPane {
 
     @FXML
     public void initialize() {
+        assert jackieGreetingImage != null &&
+                jackieInvalidImage != null &&
+                jackieValidImage != null &&
+                userImage != null
+                : "Images missing from resources";
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
         dialogContainer.getChildren().add(DialogBox.getJackieDialog(ui.guiGreeting(), jackieGreetingImage));
     }

@@ -25,8 +25,12 @@ public class Command {
      * @param taskList The current {@link TaskList}.
      */
     public void execute(UserInterface ui, TaskList taskList) {
+        assert ui != null : "User Interface not initialized";
         System.out.println(ui.defaultReply(input));
     }
 
-    public String toString(UserInterface ui, TaskList taskList) {return ui.defaultReply(input);}
+    public String toString(UserInterface ui, TaskList taskList) {
+        assert ui != null : "User Interface not initialized";
+        return ui.defaultReply(input);
+    }
 }

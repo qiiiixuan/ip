@@ -20,10 +20,14 @@ public class ListCommand extends Command {
      */
     @Override
     public void execute(UserInterface ui, TaskList taskList) {
+        assert ui != null : "User Interface not initialized";
+        assert taskList != null : "Task List not initialized";
         System.out.println(ui.reply(taskList.toString()));
     }
 
     public String toString(UserInterface ui, TaskList taskList) {
+        assert ui != null : "User Interface not initialized";
+        assert taskList != null : "Task List not initialized";
         return ui.reply(taskList.toString());
     }
 }

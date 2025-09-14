@@ -20,10 +20,12 @@ public class ExitCommand extends Command {
      */
     @Override
     public void execute(UserInterface ui, TaskList taskList) {
+        assert ui != null : "User Interface not initialized";
         System.out.println(ui.exit());
     }
 
     public String toString(UserInterface ui, TaskList taskList) {
+        assert ui != null : "User Interface not initialized";
         return ui.exit();
     }
 }

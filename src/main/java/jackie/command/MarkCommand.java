@@ -27,6 +27,8 @@ public class MarkCommand extends Command {
      */
     @Override
     public void execute(UserInterface ui, TaskList taskList) throws IndexOutOfBoundsException {
+        assert ui != null : "User Interface not initialized";
+        assert taskList != null : "Task List not initialized";
         Task task = taskList.get(index);
         if (isDone) {
             task.markAsDone();
@@ -38,6 +40,8 @@ public class MarkCommand extends Command {
     }
 
     public String toString(UserInterface ui, TaskList taskList) throws IndexOutOfBoundsException {
+        assert ui != null : "User Interface not initialized";
+        assert taskList != null : "Task List not initialized";
         Task task = taskList.get(index);
         if (isDone) {
             task.markAsDone();

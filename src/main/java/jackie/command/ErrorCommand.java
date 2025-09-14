@@ -23,10 +23,10 @@ public class ErrorCommand extends Command {
      */
     @Override
     public void execute(UserInterface ui, TaskList taskList) {
-        System.out.println(ui.showError(e));
+        System.out.println(ui.errorReply(e));
     }
 
     public String toString(UserInterface ui, TaskList taskList) {
-        return ui.showError(e);
+        return ui.errorReply(e);
     }
 }

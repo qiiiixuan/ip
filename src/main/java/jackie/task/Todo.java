@@ -14,7 +14,7 @@ public class Todo extends Task {
      *
      * @return A String representing the current task.
      */
-    public String toString () {
+    public String toString() {
         return "[T]" + super.toString();
     }
 }

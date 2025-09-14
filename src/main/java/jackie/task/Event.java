@@ -22,7 +22,7 @@ public class Event extends Task {
      *
      * @return A String representing the current task.
      */
-    public String toString () {
+    public String toString() {
         String datePattern = "dd MMM yyyy";
         return "[E]" + super.toString() + " (from: " +
                 this.from.format(DateTimeFormatter.ofPattern(datePattern)) + " to: " +

@@ -5,13 +5,16 @@ import jackie.UserInterface;
 import jackie.command.Command;
 import jackie.command.ErrorCommand;
 import jackie.command.ExitCommand;
+
 import javafx.fxml.FXML;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+
 /**
  * Controller for the main GUI.
  */
@@ -59,16 +62,26 @@ public class MainWindow extends AnchorPane {
     private void handleUserInput() {
         String input = userInput.getText();
         Command command = parser.parse(input);
-        Image jackieImage = command.getClass() == ExitCommand.class
-                ? jackieGreetingImage
-                : command.getClass() == ErrorCommand.class
-                ? jackieInvalidImage
-                : jackieValidImage;
+        Image jackieImage = getImage(command);
         String response = command.toString(ui, tasks);
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
                 DialogBox.getJackieDialog(response, jackieImage)
         );
         userInput.clear();
+    }
+
+    /**
+     * Returns Jackie images based on the different command executed.
+     *
+     * @param command The {@link Command} executed.
+     * @return An {@link Image} corresponding to the command.
+     */
+    private Image getImage(Command command) {
+        return command.getClass() == ExitCommand.class
+                ? jackieGreetingImage
+                : command.getClass() == ErrorCommand.class
+                ? jackieInvalidImage
+                : jackieValidImage;
     }
 }

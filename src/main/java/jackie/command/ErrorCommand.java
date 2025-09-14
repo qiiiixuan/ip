@@ -24,11 +24,11 @@ public class ErrorCommand extends Command {
     @Override
     public void execute(UserInterface ui, TaskList taskList) {
         assert ui != null : "User Interface not initialized";
-        System.out.println(ui.showError(e));
+        System.out.println(ui.errorReply(e));
     }
 
     public String toString(UserInterface ui, TaskList taskList) {
         assert ui != null : "User Interface not initialized";
-        return ui.showError(e);
+        return ui.errorReply(e);
     }
 }

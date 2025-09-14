@@ -10,7 +10,7 @@ public class Deadline extends Task {
 
     protected LocalDate by;
 
-    public Deadline (String name, LocalDate by) {
+    public Deadline(String name, LocalDate by) {
         super(name);
         this.by = by;
     }
@@ -20,7 +20,7 @@ public class Deadline extends Task {
      *
      * @return A String representing the current task.
      */
-    public String toString () {
+    public String toString() {
         String datePattern = "dd MMM yyyy";
         return "[D]" + super.toString() + " (by: " +
                 this.by.format(DateTimeFormatter.ofPattern(datePattern)) + ")";

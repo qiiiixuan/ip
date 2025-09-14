@@ -28,13 +28,7 @@ public class FindCommand extends Command {
         assert ui != null : "User Interface not initialized";
         assert taskList != null : "Task List not initialized";
         TaskList temp = new TaskList(new ArrayList<>());
-        Task task;
-        for (int i = 0; i < taskList.size(); i++) {
-            task = taskList.get(i);
-            if (task.toString().contains(keyword)) {
-                temp.add(task);
-            }
-        }
+        filterTasks(taskList, temp);
         System.out.println(ui.reply(temp.toString()));
     }
 
@@ -42,13 +36,23 @@ public class FindCommand extends Command {
         assert ui != null : "User Interface not initialized";
         assert taskList != null : "Task List not initialized";
         TaskList temp = new TaskList(new ArrayList<>());
+        filterTasks(taskList, temp);
+        return ui.reply(temp.toString());
+    }
+
+    /**
+     * Filters {@link TaskList} based on specified keyword.
+     *
+     * @param fullTaskList The current {@link TaskList}.
+     * @param filteredTaskList The {@link TaskList} for filtered {@link Task} to be added.
+     */
+    private void filterTasks(TaskList fullTaskList, TaskList filteredTaskList) {
         Task task;
-        for (int i = 0; i < taskList.size(); i++) {
-            task = taskList.get(i);
+        for (int i = 0; i < fullTaskList.size(); i++) {
+            task = fullTaskList.get(i);
             if (task.toString().contains(keyword)) {
-                temp.add(task);
+                filteredTaskList.add(task);
             }
         }
-        return ui.reply(temp.toString());
     }
 }

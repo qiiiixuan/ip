@@ -122,7 +122,7 @@ public class UserInterface {
      *
      * @param e The exception thrown and caught.
      */
-    public String showError(Exception e) {
+    public String errorReply(Exception e) {
         String message = e.getMessage();
         if (e instanceof IndexOutOfBoundsException) {
             message = "Task does not exist.";

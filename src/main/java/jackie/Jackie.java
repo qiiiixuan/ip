@@ -39,7 +39,7 @@ public class Jackie {
                 command.execute(ui, tasks);
                 db.writeToFile(tasks);
             } catch (IOException | IndexOutOfBoundsException e) {
-                ui.showError(e);
+                ui.errorReply(e);
             }
         }
     }

@@ -89,25 +89,25 @@ public class Database {
             FileNotFoundException,
             JackieExceptions.InvalidInputException {
         ArrayList<Task> list = new ArrayList<>();
-        char type = ' ';
-        String line = "";
-        int counter = 0;
+        char taskType;
+        String line;
+        int lineCounter = 0;
         File file = new File(path);
         Scanner fileSc = new Scanner(file);
 
         try {
             while (fileSc.hasNextLine()) {
-                counter++;
+                lineCounter++;
                 line = fileSc.nextLine();
-                type = line.charAt(3);
+                taskType = line.charAt(3);
 
-                if (type == 'T') {
+                if (taskType == 'T') {
                     list.add(new Todo(line.substring(9)));
 
-                } else if (type == 'D') {
+                } else if (taskType == 'D') {
                     if (!line.contains(" (by: ")) {
                         throw new JackieExceptions.InvalidInputException(
-                                "Wrong formatting in ./data/Tasks.txt at line " + counter
+                                "Wrong formatting in ./data/Tasks.txt at line " + lineCounter
                         );
                     }
                     list.add(new Deadline(
@@ -118,10 +118,10 @@ public class Database {
                             ), DateTimeFormatter.ofPattern("dd MMM yyyy"))
                     ));
 
-                } else if (type == 'E') {
+                } else if (taskType == 'E') {
                     if (!line.contains(" (from: ") || !line.contains(" to: ")) {
                         throw new JackieExceptions.InvalidInputException(
-                                "Wrong formatting in ./data/Tasks.txt at line " + counter
+                                "Wrong formatting in ./data/Tasks.txt at line " + lineCounter
                         );
                     }
                     list.add(new Event(
@@ -137,7 +137,7 @@ public class Database {
                     ));
                 } else {
                     throw new JackieExceptions.InvalidInputException(
-                            "Wrong formatting in ./data/Tasks.txt at line " + counter
+                            "Wrong formatting in ./data/Tasks.txt at line " + lineCounter
                     );
                 }
 
@@ -147,11 +147,11 @@ public class Database {
             }
         } catch (IndexOutOfBoundsException e) {
             throw new JackieExceptions.InvalidInputException(
-                    "Wrong formatting in ./data/Tasks.txt at line " + counter
+                    "Wrong formatting in ./data/Tasks.txt at line " + lineCounter
             );
         } catch (DateTimeParseException e) {
             throw new JackieExceptions.InvalidInputException(
-                    "Wrong date formatting in ./data/Tasks.txt at line " + counter
+                    "Wrong date formatting in ./data/Tasks.txt at line " + lineCounter
             );
         } finally {
             fileSc.close();

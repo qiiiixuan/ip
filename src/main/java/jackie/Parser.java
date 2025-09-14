@@ -1,13 +1,6 @@
 package jackie;
 
-import jackie.command.Command;
-import jackie.command.DeleteCommand;
-import jackie.command.ErrorCommand;
-import jackie.command.ExitCommand;
-import jackie.command.ListCommand;
-import jackie.command.MarkCommand;
-import jackie.command.NewTaskCommand;
-import jackie.command.FindCommand;
+import jackie.command.*;
 
 import jackie.task.Deadline;
 import jackie.task.Event;
@@ -45,6 +38,9 @@ public class Parser {
 
             } else if (Objects.equals(input, "list")) {
                 command = new ListCommand();
+
+            } else if (Objects.equals(input, "sort")) {
+                command = new SortCommand();
 
             } else if (input.startsWith("mark ") || input.startsWith("unmark ")) {
                 if (input.strip().length() < 6) {

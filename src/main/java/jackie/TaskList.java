@@ -77,4 +77,8 @@ public class TaskList {
     public int size() {
         return this.tasks.size();
     }
+
+    public void sort() {
+        tasks.sort(new TaskComparator());
+    }
 }

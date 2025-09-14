@@ -60,10 +60,15 @@ public class MainWindow extends AnchorPane {
      */
     @FXML
     private void handleUserInput() {
+        String response = null;
         String input = userInput.getText();
         Command command = parser.parse(input);
         Image jackieImage = getImage(command);
-        String response = command.toString(ui, tasks);
+        try {
+            response = command.toString(ui, tasks);
+        } catch (IndexOutOfBoundsException e) {
+            response = new ErrorCommand(e).toString(ui, tasks);
+        }
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
                 DialogBox.getJackieDialog(response, jackieImage)

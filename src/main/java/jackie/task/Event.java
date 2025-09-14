@@ -28,4 +28,12 @@ public class Event extends Task {
                 this.from.format(DateTimeFormatter.ofPattern(datePattern)) + " to: " +
                 this.to.format(DateTimeFormatter.ofPattern(datePattern)) + ")";
     }
+
+    public LocalDate getFrom() {
+        return this.from;
+    }
+
+    public LocalDate getTo() {
+        return this.to;
+    }
 }

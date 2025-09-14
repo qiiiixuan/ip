@@ -5,25 +5,25 @@ package jackie.task;
  */
 public class Task {
     protected String name;
-    protected Boolean done;
+    protected Boolean isDone;
 
     public Task(String name) {
         this.name = name;
-        this.done = false;
+        this.isDone = false;
     }
 
     /**
      * Marks this task as done.
      */
     public void markAsDone() {
-        this.done = true;
+        this.isDone = true;
     }
 
     /**
      * Marks this task as not done.
      */
     public void markAsNotDone() {
-        this.done = false;
+        this.isDone = false;
     }
 
     /**
@@ -32,7 +32,7 @@ public class Task {
      * @return A String representing the current task.
      */
     public String toString() {
-        String status = done ? "[X] " : "[ ] ";
+        String status = isDone ? "[X] " : "[ ] ";
         return status + this.name;
     }
 }

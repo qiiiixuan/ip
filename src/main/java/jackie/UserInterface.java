@@ -97,6 +97,10 @@ public class UserInterface {
         );
     }
 
+    public String sortReply() {
+        return reply("Sorted. Type 'list' to view sorted tasklist. ");
+    }
+
     /**
      * Prints a default reply onto the terminal when an invalid user input is detected.
      *
@@ -110,6 +114,7 @@ public class UserInterface {
                 \t"deadline *task* /by *date*"
                 \t"event *task* /from *date* /to *date*"
                 \t"list"
+                \t"sort"
                 \t"mark *number*"
                 \t"unmark *number*"
                 \t"find *keyword*"

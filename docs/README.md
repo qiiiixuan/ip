@@ -8,23 +8,17 @@ Jackie is your best friend that keeps track of tasks for you!
 
 Add tasks using the `todo`, `deadline`, and `event` keywords.
 
-###
-
 Example: `todo Task 1` adds the following task to the task list. 
 
 ```
 [T][ ] Task 1
 ```
 
-###
-
 Example: `deadline Task 2 /by 2025-09-19` adds the following task to the task list.
 
 ```
 [D][ ] Task 2 (by: 19 Sep 2025)
 ```
-
-###
 
 Example: `event Task 3 /from 2025-09-19 /to 2025-10-20` adds the following task to the task list.
 
@@ -38,8 +32,6 @@ Example: `event Task 3 /from 2025-09-19 /to 2025-10-20` adds the following task 
 
 Keep track of tasks you have done or not done yet. 
 
-###
-
 Example: `mark 1` checks the first task of the task list. 
 
 ```
@@ -51,8 +43,6 @@ Example: `mark 1` checks the first task of the task list.
 ## Find
 
 Search for tasks using keywords. 
-
-###
 
 Example: `find Task 2` returns the corresponding task.
 
@@ -73,8 +63,6 @@ Example: `find Oct` returns the corresponding task.
 ## Delete
 
 Remove task from task list.
-
-###
 
 Example: `delete 2` removes the second task. 
 

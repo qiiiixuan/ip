@@ -50,8 +50,6 @@ Example: `find Task 2` returns the corresponding task.
 [D][ ] Task 2 (by: 19 Sep 2025)
 ```
 
-###
-
 Example: `find Oct` returns the corresponding task.
 
 ```
